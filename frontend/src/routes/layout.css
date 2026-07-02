@@ -1,0 +1,90 @@
+@import 'tailwindcss';
+
+@theme {
+	--font-family-sans: system-ui, -apple-system, sans-serif;
+	--font-family-serif: 'Literata', Georgia, serif;
+
+	--color-bg-hard: #1d2021;
+	--color-bg: #282828;
+	--color-bg-soft: #32302f;
+	--color-bg1: #3c3836;
+	--color-bg2: #504945;
+	--color-bg3: #665c54;
+	--color-bg4: #7c6f64;
+
+	--color-fg: #ebdbb2;
+	--color-fg0: #fbf1c7;
+	--color-fg1: #ebdbb2;
+	--color-fg2: #d5c4a1;
+	--color-fg3: #bdae93;
+	--color-fg4: #a89984;
+
+	--color-red: #fb4934;
+	--color-green: #b8bb26;
+	--color-yellow: #fabd2f;
+	--color-blue: #83a598;
+	--color-purple: #d3869b;
+	--color-aqua: #8ec07c;
+	--color-orange: #fe8019;
+	--color-gray: #928374;
+}
+
+@layer base {
+	body {
+		@apply min-h-screen bg-bg-soft font-sans text-fg;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-sans font-semibold text-fg0;
+	}
+
+	h1 {
+		@apply mt-8 mb-6 text-4xl;
+	}
+
+	h2 {
+		@apply mt-6 mb-4 text-3xl;
+	}
+
+	h3 {
+		@apply mt-4 mb-3 text-2xl;
+	}
+
+	p {
+		@apply mb-4 font-serif leading-relaxed text-fg2;
+	}
+
+	a {
+		@apply text-blue no-underline transition-colors hover:text-aqua;
+	}
+
+	strong {
+		@apply font-semibold text-fg0;
+	}
+
+	code {
+		@apply rounded bg-bg1 px-1.5 py-1 text-sm font-medium text-orange;
+	}
+
+	blockquote {
+		@apply my-4 border-l-4 border-bg3 pl-4 text-fg3 italic;
+	}
+
+	hr {
+		@apply my-8 border-bg3;
+	}
+
+	ul,
+	ol {
+		@apply mb-4 ml-6 text-fg2;
+	}
+
+	li {
+		@apply mb-2;
+	}
+}

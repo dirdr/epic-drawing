@@ -1,0 +1,55 @@
+[[image]]
+name = "elephant"
+file = "resources/input/elephant.jpg"
+num_points_sample = 500
+max_coefficients = 200
+target_size = 512
+blur_sigma = 2
+canny_low_threshold = 5
+canny_high_threshold = 70
+max_link_distance = 30
+max_bridges = 10
+
+[[image]]
+name = "france"
+file = "resources/input/france.jpg"
+num_points_sample = 200
+max_coefficients = 200
+target_size = 512
+blur_sigma = 0
+canny_low_threshold = 5
+canny_high_threshold = 70
+max_link_distance = 25
+
+[[image]]
+name = "dragonite"
+file = "resources/input/dragonite.jpg"
+num_points_sample = 500
+max_coefficients = 200
+target_size = 512
+blur_sigma = 1
+canny_low_threshold = 5
+canny_high_threshold = 70
+max_link_distance = 25
+
+[[image]]
+name = "drac"
+file = "resources/input/drac.jpg"
+num_points_sample = 500
+max_coefficients = 200
+target_size = 512
+blur_sigma = 3
+canny_low_threshold = 30
+canny_high_threshold = 50
+max_link_distance = 50
+
+[[image]]
+name = "cat"
+file = "resources/input/cat.jpg"
+num_points_sample = 500
+max_coefficients = 200
+target_size = 512
+blur_sigma = 2
+canny_low_threshold = 5
+canny_high_threshold = 80
+max_link_distance = 50

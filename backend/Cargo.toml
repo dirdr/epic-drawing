@@ -1,0 +1,22 @@
+[package]
+name = "epic_drawing_backend"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rustfft = "6.4.1"
+wasm-bindgen = "0.2.104"
+serde = { version = "1", features = ["derive"] }
+serde-wasm-bindgen = "0.6.5"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg"] }
+imageproc = { version = "0.25", default-features = false }
+toml = "0.8"
+anyhow = "1.0"
+clap = { version = "4.5", features = ["derive"] }
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "epic_drawing"
+path = "src/main.rs"
