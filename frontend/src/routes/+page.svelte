@@ -15,7 +15,7 @@
 	<h1 class="text-center">Epic<span class="text-gray">(ycloid)</span> Drawing</h1>
 
 	<div class="relative flex w-full items-center justify-center">
-		<div class="absolute right-[calc(50%+470px)] top-0 hidden w-80 lg:block">
+		<div class="absolute top-0 right-[calc(50%+470px)] hidden w-80 lg:block">
 			<ImageSelector onImageSelect={handleImageSelect} />
 		</div>
 		<div class="flex items-center justify-center">
