@@ -1,0 +1,76 @@
+name: Frontend CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "frontend/**"
+      - "backend/**"
+      - ".github/workflows/ci-frontend.yaml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "frontend/**"
+      - "backend/**"
+      - ".github/workflows/ci-frontend.yaml"
+
+concurrency:
+  group: frontend-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-wasm:
+    name: Build wasm package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: backend
+          key: wasm32-unknown-unknown
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: wasm-pack
+      - name: Build wasm package
+        working-directory: backend
+        run: wasm-pack build --target web --release --out-dir ../frontend/src/lib/wasm
+      - uses: actions/upload-artifact@v7
+        with:
+          name: wasm-pkg
+          path: |
+            frontend/src/lib/wasm/*.wasm
+            frontend/src/lib/wasm/*.js
+            frontend/src/lib/wasm/*.d.ts
+            frontend/src/lib/wasm/package.json
+          retention-days: 1
+
+  frontend:
+    name: Lint, typecheck & build
+    needs: build-wasm
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v7
+        with:
+          name: wasm-pkg
+          path: frontend/src/lib/wasm
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: frontend/package.json
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Lint
+        run: bun run lint
+      - name: Typecheck
+        run: bun run check
+      - name: Build
+        run: bun run build
