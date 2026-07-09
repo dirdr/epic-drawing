@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { EpicycloidCanvas } from '$lib/components';
 	import ImageSelector from '$lib/components/ImageSelector.svelte';
 	import type { WasmCoefficient } from '$lib/types/wasm';
@@ -15,7 +16,7 @@
 	<h1 class="text-center">Epic<span class="text-gray">(ycloid)</span> Drawing</h1>
 
 	<div class="relative flex w-full items-center justify-center">
-		<div class="absolute right-[calc(50%+470px)] top-0 hidden w-80 lg:block">
+		<div class="absolute top-0 right-[calc(50%+470px)] hidden w-80 lg:block">
 			<ImageSelector onImageSelect={handleImageSelect} />
 		</div>
 		<div class="flex items-center justify-center">
@@ -29,13 +30,13 @@
 
 	<div class="flex gap-3">
 		<a
-			href="/about/maths"
+			href={resolve('/about/maths')}
 			class="rounded-lg bg-bg px-6 py-2 text-sm font-semibold transition-colors hover:bg-bg1"
 		>
 			About Maths
 		</a>
 		<a
-			href="/about/code"
+			href={resolve('/about/code')}
 			class="rounded-lg bg-bg px-6 py-2 text-sm font-semibold transition-colors hover:bg-bg1"
 		>
 			About code

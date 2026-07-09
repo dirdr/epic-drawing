@@ -39,7 +39,7 @@
 		{ real: 30, imag: 100, n: 2 }
 	];
 
-	function initializePrecomputedPath() {
+	function initializePrecomputedPath(coeffs: WasmCoefficient[]) {
 		if (coeffs.length === 0) {
 			precomputedPath = [];
 			period = 0;
@@ -54,7 +54,7 @@
 		t = 0;
 	}
 
-	$: (coeffs, initializePrecomputedPath());
+	$: initializePrecomputedPath(coeffs);
 
 	function updateScaleAndOffset() {
 		if (precomputedPath.length === 0 || width === 0 || height === 0) return;
@@ -251,7 +251,7 @@
 		resize();
 		window.addEventListener('resize', resize);
 
-		initializePrecomputedPath();
+		initializePrecomputedPath(coeffs);
 
 		lastTime = performance.now();
 		frameId = requestAnimationFrame(loop);
@@ -268,6 +268,8 @@
 	});
 </script>
 
-<div class="aspect-square w-[min(900px,90vw)] rounded-2xl p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)]">
+<div
+	class="aspect-square w-[min(900px,90vw)] rounded-2xl p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)]"
+>
 	<canvas bind:this={canvas} class="block h-full w-full rounded-xl"></canvas>
 </div>

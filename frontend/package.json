@@ -3,6 +3,7 @@
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
+	"packageManager": "pnpm@11.2.2",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -43,6 +44,7 @@
 		"vite-plugin-wasm": "^3.5.0"
 	},
 	"dependencies": {
+		"katex": "^0.16.47",
 		"rehype-katex-svelte": "^1.2.0"
 	}
 }
