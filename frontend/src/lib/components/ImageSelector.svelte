@@ -43,7 +43,7 @@
 			</div>
 		{:else}
 			<div class="flex flex-col gap-2 overflow-y-auto pr-2">
-				{#each images as image}
+				{#each images as image (image.name)}
 					<button
 						class="group relative rounded-lg px-4 py-3.5 text-left transition-all duration-200 hover:bg-bg1 {selectedImageName ===
 						image.name

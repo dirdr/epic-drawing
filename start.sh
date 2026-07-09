@@ -10,8 +10,8 @@ command -v wasm-pack >/dev/null 2>&1 || {
 	echo "error: wasm-pack is not installed (https://rustwasm.github.io/wasm-pack/installer/)" >&2
 	exit 1
 }
-command -v bun >/dev/null 2>&1 || {
-	echo "error: bun is not installed (https://bun.sh)" >&2
+command -v pnpm >/dev/null 2>&1 || {
+	echo "error: pnpm is not installed (https://pnpm.io/installation)" >&2
 	exit 1
 }
 
@@ -19,7 +19,7 @@ echo "==> Building backend to wasm"
 (cd "$BACKEND_DIR" && wasm-pack build --target web --release --out-dir "$WASM_OUT_DIR")
 
 echo "==> Installing frontend dependencies"
-(cd "$FRONTEND_DIR" && bun install --frozen-lockfile)
+(cd "$FRONTEND_DIR" && pnpm install --frozen-lockfile)
 
 echo "==> Starting frontend dev server"
-(cd "$FRONTEND_DIR" && exec bun run dev "$@")
+(cd "$FRONTEND_DIR" && exec pnpm run dev "$@")

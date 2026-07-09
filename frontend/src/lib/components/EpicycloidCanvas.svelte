@@ -39,7 +39,7 @@
 		{ real: 30, imag: 100, n: 2 }
 	];
 
-	function initializePrecomputedPath() {
+	function initializePrecomputedPath(coeffs: WasmCoefficient[]) {
 		if (coeffs.length === 0) {
 			precomputedPath = [];
 			period = 0;
@@ -54,7 +54,7 @@
 		t = 0;
 	}
 
-	$: (coeffs, initializePrecomputedPath());
+	$: initializePrecomputedPath(coeffs);
 
 	function updateScaleAndOffset() {
 		if (precomputedPath.length === 0 || width === 0 || height === 0) return;
@@ -251,7 +251,7 @@
 		resize();
 		window.addEventListener('resize', resize);
 
-		initializePrecomputedPath();
+		initializePrecomputedPath(coeffs);
 
 		lastTime = performance.now();
 		frameId = requestAnimationFrame(loop);

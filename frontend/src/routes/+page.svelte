@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { EpicycloidCanvas } from '$lib/components';
 	import ImageSelector from '$lib/components/ImageSelector.svelte';
 	import type { WasmCoefficient } from '$lib/types/wasm';
@@ -29,13 +30,13 @@
 
 	<div class="flex gap-3">
 		<a
-			href="/about/maths"
+			href={resolve('/about/maths')}
 			class="rounded-lg bg-bg px-6 py-2 text-sm font-semibold transition-colors hover:bg-bg1"
 		>
 			About Maths
 		</a>
 		<a
-			href="/about/code"
+			href={resolve('/about/code')}
 			class="rounded-lg bg-bg px-6 py-2 text-sm font-semibold transition-colors hover:bg-bg1"
 		>
 			About code
